@@ -16,7 +16,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 bat 'docker rm -f javaeedocker || true'
-                bat 'docker run -d --name javaeedocker -p 8080:8080 cladiomartins/javaeedocker'
+                bat 'docker run -d --name javaeedocker -p 8080:8080 -p 4848:4848 cladiomartins/javaeedocker'
             }
         }
     }
