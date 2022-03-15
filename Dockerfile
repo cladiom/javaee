@@ -13,6 +13,6 @@
 # limitations under the License.
 FROM glassfish:latest
 
-COPY ./target/docker.war ${GLASSFISH_HOME}/glassfish/domains/domain1/autodeploy
+COPY ./target/javaee-app.war ${GLASSFISH_HOME}/glassfish/domains/domain1/autodeploy
 
 
