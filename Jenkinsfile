@@ -19,10 +19,17 @@ pipeline {
                 bat 'docker run -d --name javaeedocker -p 8080:8080 -p 4848:4848 cladiomartins/javaeedocker'
             }
         }
-        stage('Slack') {
-            steps {
-                slackSend teamDomain: 'playground', channel: '#having-fun', color: 'good', message: 'Lets go back to have fun'
-            }
-        }
+
+       post {
+       success {
+           slackSend teamDomain: 'playground', channel: '#having-fun', color: 'good', message: 'Success'
+       }
+       failure {
+           slackSend teamDomain: 'playground', channel: '#having-fun', color: 'danger', message: 'Failure'
+       }
+       always {
+           //slackSend teamDomain: 'playground', channel: '#having-fun', color: 'good', message: 'Lets go back to have fun'
+       }
+    }
     }
 }
