@@ -22,7 +22,7 @@ pipeline {
         stage('Slack') {
             steps {
                 slackSend teamDomain: 'playground', channel: '#having-fun', color: 'warning', message: 'Lets go back to have fun'
-                slackSend uerdId: 'U037DQPMCUB', message: 'haha'
+                slackSend username: 'U037DQPMCUB', message: 'haha'
             }
         }
     }
