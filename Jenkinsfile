@@ -1,7 +1,3 @@
-def getBuildUser() {
-    return currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
-}
-
 pipeline {
     agent any
 
@@ -26,16 +22,10 @@ pipeline {
     }
     post {
         success {
-            script {
-                BUILD_USER = getBuildUser()
-            }
-           slackSend teamDomain: 'playground', channel: '#having-fun', color: 'good', message: "*${currentBuild.currentResult}:* ${env.JOB_NAME} build ${env.BUILD_NUMBER} by ${BUILD_USER}\n More info at: ${env.BUILD_URL} "
+           slackSend teamDomain: 'playground', channel: '#having-fun', color: 'good', message: "*${currentBuild.currentResult}:* ${env.JOB_NAME} build ${env.BUILD_NUMBER} by ${env.GIT_COMMITTER_NAME}\n More info at: ${env.BUILD_URL} "
         }
         failure {
-            script {
-                BUILD_USER = getBuildUser()
-            }
-           slackSend teamDomain: 'playground', channel: '#having-fun', color: 'danger', message: "*${currentBuild.currentResult}:* ${env.JOB_NAME} build ${env.BUILD_NUMBER} by ${BUILD_USER}\n More info at: ${env.BUILD_URL} "
+           slackSend teamDomain: 'playground', channel: '#having-fun', color: 'danger', message: "*${currentBuild.currentResult}:* ${env.JOB_NAME} build ${env.BUILD_NUMBER} by ${env.GIT_COMMITTER_NAME}\n More info at: ${env.BUILD_URL} "
         }
         //always {
            //slackSend teamDomain: 'playground', channel: '#having-fun', color: 'good', message: 'Lets go back to have fun'
