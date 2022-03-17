@@ -21,8 +21,7 @@ pipeline {
         }
         stage('Slack') {
             steps {
-                slackSend teamDomain: 'playground', channel: '#having-fun', color: 'warning', message: 'Lets go back to have fun'
-                slackSend slack-user-id: 'U037DQPMCUB', message: 'haha'
+                slackSend teamDomain: 'playground', channel: '#having-fun', color: 'good', message: 'Lets go back to have fun'
             }
         }
     }
