@@ -27,8 +27,8 @@ pipeline {
         failure {
            slackSend teamDomain: 'playground', channel: '#having-fun', color: 'danger', message: 'Failure'
         }
-        always {
+        //always {
            //slackSend teamDomain: 'playground', channel: '#having-fun', color: 'good', message: 'Lets go back to have fun'
-        }
+        //}
     }
 }
