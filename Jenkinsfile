@@ -22,13 +22,14 @@ pipeline {
     }
     post {
         success {
-           slackSend teamDomain: 'playground', channel: '#having-fun', color: 'good', message: 'Success'
+           slackSend teamDomain: 'playground', channel: '#having-fun', color: 'good', message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} by ${env.BUILD_USER}\n More info at: ${env.BUILD_URL}"
         }
         failure {
-           slackSend teamDomain: 'playground', channel: '#having-fun', color: 'danger', message: 'Failure'
+           slackSend teamDomain: 'playground', channel: '#having-fun', color: 'danger', message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} by ${env.BUILD_USER}\n More info at: ${env.BUILD_URL}"
         }
         //always {
            //slackSend teamDomain: 'playground', channel: '#having-fun', color: 'good', message: 'Lets go back to have fun'
         //}
+        
     }
 }
