@@ -19,5 +19,10 @@ pipeline {
                 bat 'docker run -d --name javaeedocker -p 8080:8080 -p 4848:4848 cladiomartins/javaeedocker'
             }
         }
+        stage() {
+            steps {
+                slackSend message: 'Test Message'
+            }
+        }
     }
 }
