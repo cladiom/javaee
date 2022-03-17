@@ -22,8 +22,7 @@ pipeline {
         stage('Slack') {
             steps {
                 slackSend teamDomain: 'playground', channel: '#having-fun', color: 'warning', message: 'Lets go back to have fun'
-                slackSend botUser: true, message: 'haha', notifyCommitters: true, tokenCredentialId: 'slack-bot-token'
-                //slackSend teamDomain: U037DQPMCUB
+                slackSend uerdId: 'U037DQPMCUB', message: 'haha'
             }
         }
     }
