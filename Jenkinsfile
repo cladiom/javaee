@@ -21,7 +21,9 @@ pipeline {
         }
         stage('Slack') {
             steps {
-                slackSend teamDomain: 'playground', channel: '#general', color: 'warning', message: 'Test Message to be careful'
+                slackSend teamDomain: 'playground', channel: '#having-fun', color: 'warning', message: 'Lets go back to have fun'
+                slackSend teamDomain: 'playground', channel: '#having-fun', color: 'good', message: 'See when things are green'
+                slackSend teamDomain: 'playground', channel: '#having-fun', color: 'danger', message: 'But mainly to not be in danger'
             }
         }
     }
